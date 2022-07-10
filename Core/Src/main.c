@@ -64,7 +64,7 @@ static void MX_TIM1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 static void reset() {
-	
+	receive = '\0'; // do not repeat.
 	HAL_GPIO_WritePin(seg_a_GPIO_Port, seg_a_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(seg_b_GPIO_Port, seg_b_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(seg_c_GPIO_Port, seg_c_Pin, GPIO_PIN_RESET);
@@ -156,7 +156,6 @@ static void seg(int pin) {
 			break;
 
 		case 'l' - '0':
-			receive = '\0'; // do not repeat. this will prevent an infinite loop, hopefully.
 			for(int i=1; i<10; i++) {
 				seg(i);
 				HAL_Delay(1000);
