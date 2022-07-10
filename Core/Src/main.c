@@ -155,6 +155,13 @@ static void seg(int pin) {
 			HAL_GPIO_WritePin(seg_b_GPIO_Port, seg_b_Pin, GPIO_PIN_SET);
 			break;
 
+		case 'l' - '0':
+			receive = '\0'; // do not repeat. this will prevent an infinite loop, hopefully.
+			for(int i=1; i<10; i++) {
+				seg(i);
+				HAL_Delay(1000);
+			}
+			reset();
 		case 'r' - '0':
 			reset();
 			break;
