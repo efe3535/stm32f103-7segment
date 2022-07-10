@@ -155,9 +155,9 @@ static void seg(int pin) {
 			HAL_GPIO_WritePin(seg_b_GPIO_Port, seg_b_Pin, GPIO_PIN_SET);
 			break;
 
-		case '.':
+		case '.' - '0':
 			reset();
-			HAL_GPIO_WritePin(seg_dp_GPIO_POrt, seg_dp_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(seg_dp_GPIO_Port, seg_dp_Pin, GPIO_PIN_SET);
 
 		default:
 			break;
